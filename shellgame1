@@ -1,0 +1,159 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyP6yaqK3gaOKXio/Lupr3rW",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/jessicaDye/introPython/blob/main/shellgame1\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "YhOSBtJVgBWv",
+        "outputId": "1b1bc548-12dc-45f4-f0dc-8e71ac1b7851"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['*']\n",
+            "['*', '*', '*']\n",
+            "['*', '*', '*', '*', '*']\n"
+          ]
+        }
+      ],
+      "source": [
+        "state = ['*', '*', '*', '*', '*', '*', '*', '*', '*']\n",
+        "\n",
+        "def  display_state(s):\n",
+        "  print(s[0:1])\n",
+        "  print(s[1:4])\n",
+        "  print(s[4:9])\n",
+        "\n",
+        "display_state(state)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "MOVES\n",
+        "0\n",
+        "1, 2, 3\n",
+        "4, 5, 6, 7, 8"
+      ],
+      "metadata": {
+        "id": "EgyONeakhQ3j"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def update_state(state, move):\n",
+        "  if state[move] != '*':\n",
+        "    print('Invalid Move!')\n",
+        "  else:\n",
+        "    if move >= 4:\n",
+        "      for i in range(move, 9):\n",
+        "        state[i] = '-'\n",
+        "    elif move >= 1:\n",
+        "      for i in range(move, 4):\n",
+        "        state[i] = '-'\n",
+        "    else:\n",
+        "      state[0] = '-'\n",
+        "\n",
+        "update_state(state, 3)\n",
+        "display_state(state)\n",
+        "\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7-r6oQ2Bhb5Y",
+        "outputId": "4b4d2065-9c03-48cd-98e7-d3d9e31f2a04"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['*']\n",
+            "['*', '*', '-']\n",
+            "['*', '*', '*', '*', '*']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "using a while loop instead of range based for loop\n"
+      ],
+      "metadata": {
+        "id": "SrM1-PgQknfF"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "while True:\n",
+        "  display_state(state)\n",
+        "  move = int(input('What is your move?'))\n",
+        "  update_state(state, move)\n",
+        "  if state == ['-', '-', '-', '-', '-', '-', '-', '-', '-']:\n",
+        "    print = 'WINNER!'\n",
+        "    break\n",
+        "\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "nhSHi8Fmktlf",
+        "outputId": "a9e53295-4b07-4bf0-d59b-e1a0d9da3c41"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['*']\n",
+            "['*', '*', '-']\n",
+            "['*', '*', '*', '*', '*']\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
